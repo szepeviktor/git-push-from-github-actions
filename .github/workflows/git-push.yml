@@ -9,9 +9,9 @@ jobs:
       -
         uses: actions/checkout@v3
       -
-        name: Show remote configuration
+        name: Show git configuration
         run: |
-          git remote --verbose
+          git config --show-origin --list
       -
         name: Create report file
         run: |
