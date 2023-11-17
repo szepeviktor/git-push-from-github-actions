@@ -9,6 +9,10 @@ jobs:
       -
         uses: actions/checkout@v3
       -
+        name: Show remote configuration
+        run: |
+          git remote --verbose
+      -
         name: Create report file
         run: |
           date "+%s" >report.txt
