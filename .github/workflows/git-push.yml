@@ -1,13 +1,26 @@
+name: Push commit
 on: push
 jobs:
-  build:
+  git_push:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          date > generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
-          git push
+    -
+      uses: actions/checkout@v4
+    -
+      name: Show git configuration
+      run: |
+        git config --show-origin --list
+    -
+      name: Create report file
+      run: |
+        date "+%s" >report.txt
+    -
+      name: Commit report changes
+      run: |
+        git config --global user.name 'Szépe Viktor'
+        git config --global user.email 'szepeviktor@users.noreply.github.com'
+        git add -- report.txt
+        git commit -m "Commit by GitHub Actions workflow"
+        git push --atomic origin master
