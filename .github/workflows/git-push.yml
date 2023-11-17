@@ -2,8 +2,8 @@ name: Push commit
 on: push
 jobs:
   report:
-    permissions:
-      contents: write
+    #permissions:
+    #  contents: write
     runs-on: ubuntu-latest
     steps:
       -
